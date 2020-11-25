@@ -1,0 +1,46 @@
+
+
+<%# menus.each do |menu| %>
+  <%#= menu[:name] %>
+<%# end %>  
+
+<table class="table table-striped" >
+  <tr class="thead-dark">
+    <th>Title</th>
+    <th>Text</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>verify</th>
+    <th>SHOW</th>
+    <th>EDIT</th>
+    <th>DELETE</th>
+
+
+
+    <th colspan="2"></th>
+  </tr>
+ 
+ <% current_user.articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= article.name%></td>
+      <td><%= article.email%>
+
+        <% if article.verify %>
+          <td>verified</td>
+        <%else %>
+          <td>not verified</td>
+        <%end%>
+    
+
+      <td><%= link_to 'Show', article_path(article) %></td>
+      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+       <td><%= link_to 'Destroy', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+
+  
+</table>

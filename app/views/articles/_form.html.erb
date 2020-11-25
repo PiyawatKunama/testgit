@@ -1,0 +1,52 @@
+
+<%= form_with model: @article, local: true do |form| %>
+ 
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@article.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+
+  <form>
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title ,class:"form-control"%>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name ,class:"form-control"%>
+    </div>
+  
+  <div class="form-group">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name ,class:"form-control"%>
+    </div>
+
+  <div class="form-group">
+      <%= form.label :text %>
+      <%= form.text_area :text ,class:"form-control"%>
+    </div>
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.text_field :email ,class:"form-control"%>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :verify %>
+      <%= form.check_box :verify ,class:"form-control"%>
+    </div>
+    <p>
+      <%= form.submit %>
+    </p>
+  </form>
+  <% end %>
