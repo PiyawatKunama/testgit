@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   get 'articles/new'
 
+  get 'users/user'
+
   resources :articles do
     member do
       get 'read' # /articles/:id/read

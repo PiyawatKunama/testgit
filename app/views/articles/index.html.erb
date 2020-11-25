@@ -20,7 +20,7 @@
     <th colspan="2"></th>
   </tr>
  
- <% current_user.articles.each do |article| %>
+ <% @articles.each do |article| %>
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>

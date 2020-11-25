@@ -12,14 +12,10 @@ class ArticlesController < ApplicationController
 
 
   def create
-    ap '=' * 30
-   ap current_user
-   ap '=' * 30
+  
 
     @article = current_user.articles.create(article_params)
 
-   ap @article
-   ap '*'*30
 
     if @article.save
       redirect_to @article
@@ -59,6 +55,16 @@ class ArticlesController < ApplicationController
   private
   
   def article_params  
+    params.require(:user).permit(:title, :text, :verify,:first_name,:last_name,:email)
     params.require(:article).permit(:title, :text, :verify,:first_name,:last_name,:email)
+    params = {
+      article: {
+        title: "test",
+        text: "test", 
+       
+      },
+      status: ""
+    }
+    
   end
 end
