@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
   get 'articles/new'
 
-  get 'users/user'
+  
+  resources :users
+  # index => list
+  # new => form
+  # edit => form
+  # show => detail
+  # create
+  # update
+  # destroy
 
   resources :articles do
     member do
@@ -12,9 +20,7 @@ Rails.application.routes.draw do
     collection do
       get 'read' # /articles/read
     end
-  end
 
-  resources :articles do
     resources :comments
   end
   
